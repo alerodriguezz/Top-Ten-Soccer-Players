@@ -3,7 +3,7 @@ import requests
 import lxml
 import pandas as pd
 
-base_url = "https://www.fifaindex.com/players/updated/?order=0&order_by=overallrating"
+base_url = "https://www.fifaindex.com/players/?order_by=overallrating&order=0"
 
 requests.get(base_url)
 
@@ -37,7 +37,7 @@ list_of_players = player_names[:10]
 
 for player in list_of_players:
   name = player.text
-  team = player.next_sibling.next_sibling.next_sibling.next_sibling.find('a')['title']
+  team = player.next_sibling.next_sibling.next_sibling.find('a')['title']
   rating = player.previous_sibling.text
   
   if name:
